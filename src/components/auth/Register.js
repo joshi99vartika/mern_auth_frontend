@@ -15,7 +15,6 @@ export default function Register() {
   const history = useHistory();
   const submit = async (e) => {
     e.preventDefault();
-
     try {
       const newUser = { email, password, passwordCheck, displayName };
       if (password.length > 8) {
@@ -41,19 +40,19 @@ export default function Register() {
                 localStorage.setItem("auth-token", loginRes.data.token);
                 history.push("/");
               } else {
-                alert("please include one special character");
+                console.log("please include one special character");
               }
             } else {
-              alert("please include one Capital letter");
+              console.log("please include one Capital letter");
             }
           } else {
-            alert("please include one small letter");
+            console.log("please include one small letter");
           }
         } else {
-          alert("please include one digit");
+          console.log("please include one digit");
         }
       } else {
-        alert("Password length should be greater than 8");
+        console.log("Password length should be greater than 8");
       }
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
